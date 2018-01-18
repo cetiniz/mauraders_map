@@ -1,0 +1,61 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div text-center>
+          <img width="80%" heigh="80%" src="../assets/imgs/logo.png" />
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <form [formGroup]="login" (ngSubmit)="process_login()">
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="text" placeholder="McMaster email" formControlName="email" clearInput
+                       [(ngModel)]="email_after_register"
+                       [class.invalid]="!login.controls.email.valid && (login.controls.email.dirty || submitAttempt)">
+            </ion-input>
+          </ion-item>
+          <ion-item *ngIf="!login.controls.email.valid && (login.controls.email.dirty || submitAttempt)">
+            <p>Please enter a valid McMaster email!</p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="password" placeholder="Password" formControlName="password" clearInput
+                       [class.invalid]="!login.controls.password.valid && (login.controls.password.dirty || submitAttempt)">
+            </ion-input>
+          </ion-item>
+          <ion-item *ngIf="!login.controls.password.valid && (login.controls.password.dirty || submitAttempt)">
+            <p>Please enter a valid password!</p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col text-center>
+          <button type="submit" ion-button round full large
+                  color="login" style="color: #333333"
+                  [disabled]="!login.valid">
+            Login &nbsp;&nbsp; <ion-icon name="arrow-dropright-circle"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+
+    <ion-row>
+      <ion-col text-center>
+        <p>
+          Not registered yet?<br><br>
+          <button ion-button round outline (click)="goSignUp()">Register</button>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

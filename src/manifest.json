@@ -1,0 +1,13 @@
+{
+  "name": "MaraudersMap",
+  "short_name": "MaraudersMap",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/imgs/logo.png",
+    "sizes": "1024x1024",
+    "type": "image/png"
+  }],
+  "background_color": "#A10342",
+  "theme_color": "#A10342"
+}

@@ -1,0 +1,4 @@
+User		_id, email, password, avatar, firstname, lastname, distanceUnit, accessibility, position {lat,lng}
+Friend
+
+Friendship	_idA, _idB, status ['received', 'pending', 'accepted']

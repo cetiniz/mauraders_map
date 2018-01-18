@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>
+      General Settings
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>
+        Accessibility <br/> Entrances
+        <button round ion-button icon-only style="background-color: white; margin: -35px 0 10px 15px" (click)="showPopover($event)">
+          <ion-icon name="information-circle" style="color: blue"></ion-icon>
+        </button>
+      </ion-label>
+      <ion-toggle Enabled checked="{{accessibility}}" [(ngModel)]="accessValue" (ionChange)="updateAccessibility()"></ion-toggle>
+    </ion-item>
+
+    <div padding>
+      <ion-label> Distance Units</ion-label>
+      <ion-segment [(ngModel)]="distanceUnit" (ionChange)="updateDistanceUnit()">
+        <ion-segment-button value="km" selected>km</ion-segment-button>
+        <ion-segment-button value="mile">miles</ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-list>
+
+
+  <ion-list inset>
+    <ion-list-header> Profile Settings </ion-list-header>
+    <button ion-item (click)="clickPassword()">Password</button>
+    <button ion-item (click)="clickNames()">Firstname/Lastname</button>
+    <button ion-item (click)="changePicture()">Picture</button>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img *ngIf="avatar !== undefined" src="../../assets/avatars/{{avatar}}.png">
+        <img *ngIf="avatar === undefined" src="../../assets/avatars/pending.png">
+      </ion-thumbnail>
+      <h2>{{firstname}} {{lastname}}</h2>
+      <p>{{email}}</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

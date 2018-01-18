@@ -1,0 +1,13 @@
+page-friends {
+  .scroll-content {
+    height: 100%;
+    padding: 0px !important;
+    overflow: hidden;
+  }
+
+  ion-note {
+    font-size: 12px;
+    align-self: flex-start;
+    margin-top: 14px;
+  }
+}

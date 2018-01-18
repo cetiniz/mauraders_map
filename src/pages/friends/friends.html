@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Friends
+      <ion-badge color="danger" *ngIf="numberNotifications > 0">{{ numberNotifications }}</ion-badge>
+    </ion-title>
+    <ion-buttons end><button ion-button round icon-only color="primary" (click)="promptAddFriend()">Add <ion-icon name="person-add"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+  <ion-searchbar type="search" animated="true"
+                 placeholder="Search"
+                 [(ngModel)]="userInput"
+                 [showCancelButton]="shouldShowCancel"
+                 (ionInput)="onInput($event)">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Cast a spell to find new friends"
+      refreshingSpinner="dots"
+      refreshingText="Letting the magic happen">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngIf="friends.length > 0">
+    <ion-item-sliding *ngFor="let friend of friends">
+      <ion-item>
+        <ion-avatar item-start *ngIf="friend.status !== 'pending'">
+          <img src="../../assets/avatars/{{friend.avatar}}.png">
+        </ion-avatar>
+        <ion-avatar item-start *ngIf="friend.status === 'pending'">
+          <img src="../../assets/avatars/pending.png">
+        </ion-avatar>
+
+        <h2 *ngIf="friend.status !== 'pending'">{{friend.firstname}} {{friend.lastname}}</h2>
+        <h3 *ngIf="friend.status === 'pending'">{{friend.email}}</h3>
+
+        <button *ngIf="friend.status === 'received'" item-end ion-button color="secondary" (click)="acceptFriendRequest(friend)">Accept</button>
+        <ion-note *ngIf="friend.status === 'pending'" item-end>Invitation sent</ion-note>
+        <ion-icon *ngIf="friend.status === 'accepted'" item-end name="pin"></ion-icon>
+        <ion-note *ngIf="friend.status === 'accepted'" item-end style="margin: 20px 8px 0px 0px">2.3km</ion-note>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-start (click)="deleteFriend(friend)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <div *ngIf="friends.length == 0" padding>
+    <p>There is nothing to display here...</p>
+    <img src="../../assets/loader/harry_snitch.gif"/>
+  </div>
+</ion-content>

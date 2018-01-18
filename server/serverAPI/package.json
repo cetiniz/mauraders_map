@@ -1,0 +1,33 @@
+{
+  "name": "serverapi",
+  "version": "1.0.0",
+  "description": "RESTful serverAPI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016https://github.com/Naheuldark/serverAPI"
+  },
+  "keywords": [
+    "RESTful",
+    "API",
+    "server",
+    "MaraudersMap"
+  ],
+  "author": "Julien Bordas",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "@google/maps": "^0.4.5",
+    "express": "^4.16.2",
+    "body-parser": "^1.17.x",
+    "cfenv": "^1.0.x",
+    "cloudant": "^1.7.x",
+    "dotenv": "^4.0.0"
+  }
+}

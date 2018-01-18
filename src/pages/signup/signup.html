@@ -1,0 +1,73 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div text-center>
+          <img width="280" heigh="280" src="../assets/imgs/logo.png" />
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <form [formGroup]="signup" (ngSubmit)="process_signup()">
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="text" placeholder="McMaster email" formControlName="email" clearInput
+                       [class.invalid]="!signup.controls.email.valid && (signup.controls.email.dirty || submitAttempt)">
+            </ion-input>
+          </ion-item>
+          <ion-item *ngIf="!signup.controls.email.valid && (signup.controls.email.dirty || submitAttempt)">
+            <p>Please enter a valid McMaster email!</p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="password" placeholder="Password" formControlName="password" clearInput
+                       [class.invalid]="!signup.controls.password.valid && (signup.controls.password.dirty || submitAttempt)">
+            </ion-input>
+          </ion-item>
+          <ion-item *ngIf="!signup.controls.password.valid && (signup.controls.password.dirty || submitAttempt)">
+            <p>Please enter a valid password!</p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="password" placeholder="Confirm Password" formControlName="conf_password" clearInput
+                       [class.invalid]="!signup.controls.conf_password.valid && (signup.controls.conf_password.dirty || submitAttempt)">
+            </ion-input>
+          </ion-item>
+          <ion-item *ngIf="!signup.controls.conf_password.valid && signup.controls.conf_password.errors.matchPasswords && (signup.controls.conf_password.dirty || submitAttempt)">
+            <p>Please re-enter the same password!</p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col text-center>
+          <button type="submit" ion-button round full large
+                  color="signup" style="color: #333333"
+                  [disabled]="!signup.valid">
+            Register &nbsp;&nbsp; <ion-icon name="arrow-dropright-circle"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+
+    <ion-row>
+      <ion-col text-center>
+        <p>
+          Already registered?<br><br>
+          <button ion-button round outline (click)="goLogin()">Login</button>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
